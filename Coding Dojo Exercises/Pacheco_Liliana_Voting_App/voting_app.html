@@ -1,0 +1,44 @@
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+
+<div id="app"><div>
+<script type="text/babel">
+    var candidateList = [{"title": "React", "count":15},  
+                         {"title": "Vue", "count": 12},
+                         {"title": "Angular", "count": 9},
+                         {"title": "Ember", "count": 4},];
+
+
+    function makeCandidates(candidates){
+        const candidateBoxes =  candidates.map( (candidate) => {
+            console.log(candidate["title"])
+            return candidateBox(candidate["title"], candidate["count"]);
+        });
+        return <div className="border border-dark">{candidateBoxes}</div>;
+    }
+
+
+    function candidateBox(candidateTitle, candidateCount){
+        return <div className="d-flex justify-content-between align-items-center border border-dark p-2" key={candidateTitle}>
+                    <div style={{minWidth: "80px",}} className="d-flex justify-content-center">{candidateCount}</div>
+                    <h1>{candidateTitle}</h1>
+                    <div className="btn btn-outline-success">+</div> 
+               </div>
+    }
+
+
+    ReactDOM.render(
+        <div className="d-flex justify-content-center">
+            <div className="d-inline-flex flex-column">
+                <h1 className="Display-1 m-4">Vote Your JS Library!</h1>
+                {makeCandidates(candidateList)}
+            </div>
+        </div>,
+        document.getElementById('app')
+    );
+</script>

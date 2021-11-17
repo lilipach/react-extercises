@@ -1,0 +1,24 @@
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script>
+    function makeBlock (blockColor, titleColor, title) {
+        const elementStyle = {
+            style: {
+                backgroundColor: blockColor,
+                color: titleColor,
+                height: "200px",
+                width: "200px",
+            }
+        };
+
+        return React.createElement('h1', elementStyle, title);
+    };
+
+    const whiteOnBlue = makeBlock("blue", "white", "white on blue");
+    const blueOnRed = makeBlock("red", "blue", "blue on red");
+    const greenOnPink = makeBlock("green", "pink", "green on pink");
+
+    const ui = React.createElement("div", {style:{display: "flex", id: "this-id"}}, whiteOnBlue, blueOnRed, greenOnPink);
+    ReactDOM.render(ui, document.getElementById("app"));
+</script>

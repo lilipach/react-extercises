@@ -1,0 +1,18 @@
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<div id="app"></div>
+<script>
+    const title = React.createElement("h1", null, "Hello Dojo!");
+    const subTitle = React.createElement("h2", null, "Things I need to do:");
+    const li = ["Leaern React", "Climb Mt. Rainier", "Feed the dogs"];
+    const toDoList = React.createElement("ul", null, 
+        li.map( 
+                (item, index) => 
+                React.createElement("li", {key: index}, item)
+        )
+    );
+    const app = React.createElement("div", null, title, subTitle, toDoList);
+
+    ReactDOM.render(app, document.getElementById("app"));
+
+</script>

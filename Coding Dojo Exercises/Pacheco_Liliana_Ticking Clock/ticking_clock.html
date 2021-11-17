@@ -1,0 +1,20 @@
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+<!DOCTYPE html>
+<html>
+<body>
+	<div id="app"></div>
+	<script>
+		function tick(time) {
+			var today = new Date()
+			var time = today.toLocaleTimeString('en-US')
+			console.log(time)
+			var element = `The time is: ${time}`
+			ReactDOM.render(element, document.getElementById('app'));
+		};
+	
+		setInterval(tick, 1000);
+	</script>
+</body>
+</html>

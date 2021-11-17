@@ -1,0 +1,73 @@
+<script src="node_modules/react/umd/react.development.js"></script>
+<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+<div id="app"><div>
+<script type="text/babel">
+    class Counter extends React.Component {
+        constructor(props){
+        super(props);
+        this.state = {counter:0};
+        }
+        render() {
+            return (
+                <div className="d-inline-flex flex-column text-center border border-secondary rounded p-2 m-4">
+                    <div className="display-4 py-4">
+                        {this.state.counter}
+                    </div>
+                    <div>
+                        <button
+                            className="btn btn-primary m-2" 
+                            onClick={ () => this.setState({ counter: this.state.counter + 1 }) } >
+                            Increment
+                        </button>
+                        <button 
+                            className = "btn btn-secondary m-2"
+                            onClick={ () => this.setState({ counter: this.state.counter - 1 }) } >
+                            Decrement
+                        </button>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    class Counters extends React.Component{
+        constructor(props){
+        super(props);
+        this.state = {numCounters:1};
+        }
+
+        render() {
+            const counters = [];
+
+            for (var i = 0; i < this.state.numCounters; i += 1) {
+                counters.push(<Counter key={i}/>);
+            };
+
+            return (
+                <div>
+                    <div class="d-flex">
+                        <button
+                            className="btn btn-primary m-2" 
+                            onClick={ () => this.setState({ numCounters: this.state.numCounters + 1 }) } >
+                            Add Counter
+                        </button>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        {counters}
+                    </div>
+                </div>
+
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Counters/>,
+        document.getElementById('app')
+    );
+</script>
